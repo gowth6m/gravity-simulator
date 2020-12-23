@@ -1,28 +1,4 @@
 
-
-// Particle object
-function createNewParticle(name) {
-    const obj = {};
-    obj.name = name;
-    obj.greeting = function() {
-        var c = document.getElementById("simulationCanvas");
-        var ctx = c.getContext("2d");
-        ctx.beginPath();
-        ctx.arc(Math.random(), Math.random(), 20, 0, 2 * Math.PI);
-        ctx.stroke();
-    };
-    return obj;
-}
-
-function createParticles() {
-    numberOfParticles = Math.random();
-
-    const salva = createNewParticle('Bob');
-    salva.greeting();
-
-}
-
-
 $(document).ready(function(){
     // Hide the pause button
     $("#btn-pause").hide();
@@ -31,6 +7,7 @@ $(document).ready(function(){
     // Show pause button and hide simulation settings
         $("#simulation-settings").hide();
         $("#btn-pause").show();
+        $("#simulationCanvas").css({"width": "100vw", "height": "100vh", "top": "0", "margin-top": "0"});
 
         createParticles();
     });
@@ -39,5 +16,6 @@ $(document).ready(function(){
     $("#btn-pause").click(function(){
         $("#simulation-settings").show();
         $("#btn-pause").hide();
+        $("#simulationCanvas").css({"width": "80vw", "height": "80vh", "top": "50%", "margin-top": "-40vh"});
     });
   });
