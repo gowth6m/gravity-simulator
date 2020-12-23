@@ -6,8 +6,10 @@ function clearCanvas(){
 }
 
 // Animations ========================================
-let rectX = Math.floor(Math.random() * 200) + 20;
-let rectY = Math.floor(Math.random() * 200) + 20;
+let rectX = Math.floor(Math.random() * 50) + 50;
+let rectY = Math.floor(Math.random() * 50) + 50;
+// let rectX = 50;
+// let rectY = 50;
 let resetCanvas = false;
 let paused = false;
 let movingDirectionX = false;
@@ -20,6 +22,8 @@ function gameLoop(timeStamp) {
         if(!paused) {
             update();
             movingDirectionCalculator();
+            document.getElementById('width').innerHTML = rectX;
+            document.getElementById('height').innerHTML = rectY;
         }
         draw();
         window.requestAnimationFrame(gameLoop);
@@ -27,13 +31,27 @@ function gameLoop(timeStamp) {
 }
 
 function update() {
-    if(!movingDirectionX) {
+    // if(!movingDirectionX) {
+    //     rectX += 0.5 * inputSpeed;
+    // } else {
+    //     rectX -= 0.5 * inputSpeed;
+    // }
+    
+    // if(!movingDirectionY) {
+    //     rectY += 0.5 * inputSpeed;
+    // } else {
+    //     rectY -= 0.5 * inputSpeed;
+    // }
+
+    var canvas = document.getElementById('simulationCanvas');
+
+    if(rectX < canvas.width) {
         rectX += 0.5 * inputSpeed;
     } else {
         rectX -= 0.5 * inputSpeed;
     }
-    
-    if(!movingDirectionY) {
+
+    if(rectY < canvas.height) {
         rectY += 0.5 * inputSpeed;
     } else {
         rectY -= 0.5 * inputSpeed;
@@ -70,6 +88,8 @@ $(document).ready(function(){
     $("#btn-pause").hide();
 
     $("#btn-run").click(function(){
+        // var canvas= document.getElementById('simulationCanvas');
+        // alert(canvas.height);
     // Show pause button and hide simulation settings
         inputSpeed = document.getElementById("input-speed").value;
         $("#simulation-settings").hide();

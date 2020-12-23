@@ -117,3 +117,13 @@ input[type=number] {
     top: 5vh;
     right: 5vw;
 }
+
+#width {
+    z-index: 10000;
+    color: white;
+}
+
+#height {
+    z-index: 10000;
+    color: white;
+}
