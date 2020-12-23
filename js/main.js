@@ -1,3 +1,10 @@
+// Clear canvas
+function clearCanvas(){
+    var canvas= document.getElementById('simulationCanvas');
+    var ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0,  canvas.width, canvas.height);
+}
+
 
 $(document).ready(function(){
     // Hide the pause button
@@ -18,4 +25,10 @@ $(document).ready(function(){
         $("#btn-pause").hide();
         $("#simulationCanvas").css({"width": "80vw", "height": "80vh", "top": "50%", "margin-top": "-40vh"});
     });
-  });
+
+    // Reset canvas
+    $("#btn-reset").click(function(){
+        clearCanvas();
+    });
+
+});

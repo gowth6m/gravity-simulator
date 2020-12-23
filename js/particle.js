@@ -1,5 +1,5 @@
-context = canvas.getContext('2d')
-context.scale(2,2)
+// context = canvas.getContext('2d')
+// context.scale(2,2)
 
 // Particle object
 function createNewParticle(name) {
