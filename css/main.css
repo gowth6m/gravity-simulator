@@ -4,7 +4,13 @@ OVERALL CSS
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 
 :root {
+    --white: #f8f8f8;
+    --oxfordBlue: #160F29;
     --white: #F7FFF7;
+    --lightBlue: #0FF4C6;
+    --pink: #DEFFF2;
+    --yellow: #065143;
+
     --body-font: 'Poppins', sans-serif;
     --title-font-size: 4rem;
     --big-font-size: 2rem;
