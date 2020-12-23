@@ -6,16 +6,20 @@ function clearCanvas(){
 }
 
 // Animations ========================================
-let rectX = 60;
-let rectY = 60;
+let rectX = Math.floor(Math.random() * 200) + 20;
+let rectY = Math.floor(Math.random() * 200) + 20;
 let resetCanvas = false;
 let paused = false;
+let movingDirectionX = false;
+let movingDirectionY = false;
+let inputSpeed = document.getElementById('input-speed').value;
 
 function gameLoop(timeStamp) {
     // Update game objects in the loop
     if(!resetCanvas) {
         if(!paused) {
             update();
+            movingDirectionCalculator();
         }
         draw();
         window.requestAnimationFrame(gameLoop);
@@ -23,8 +27,17 @@ function gameLoop(timeStamp) {
 }
 
 function update() {
-    rectX += Math.ceil((Math.random() - 0.5) * 2) < 1 ? -2 : 2;
-    rectY += Math.ceil((Math.random() - 0.5) * 2) < 1 ? -2 : 2;
+    if(!movingDirectionX) {
+        rectX += 0.5 * inputSpeed;
+    } else {
+        rectX -= 0.5 * inputSpeed;
+    }
+    
+    if(!movingDirectionY) {
+        rectY += 0.5 * inputSpeed;
+    } else {
+        rectY -= 0.5 * inputSpeed;
+    }
 }
 
 function draw() {
@@ -33,7 +46,21 @@ function draw() {
     // Clear the entire canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = '#ff8080';
-    ctx.fillRect(rectX, rectY, 80, 80);
+    ctx.fillRect(rectX, rectY, 20, 20);
+}
+
+function movingDirectionCalculator() {
+    if ((Math.ceil((Math.random() - 0.5) * 2) < 1 ? -10 : 10) > 0) {
+        movingDirectionX = true;
+    } else if ((Math.ceil((Math.random() - 0.5) * 2) < 1 ? -10 : 10) < 0) {
+        movingDirectionX = false
+    }
+
+    if ((Math.ceil((Math.random() - 0.5) * 2) < 1 ? -10 : 10) > 0) {
+        movingDirectionY = true;
+    } else if ((Math.ceil((Math.random() - 0.5) * 2) < 1 ? -10 : 10) < 0) {
+        movingDirectionY = false
+    }
 }
 
 
@@ -44,6 +71,7 @@ $(document).ready(function(){
 
     $("#btn-run").click(function(){
     // Show pause button and hide simulation settings
+        inputSpeed = document.getElementById("input-speed").value;
         $("#simulation-settings").hide();
         $("#btn-pause").show();
         $("#simulationCanvas").css({"width": "100vw", "height": "100vh", "top": "0", "margin-top": "0"});
@@ -65,6 +93,8 @@ $(document).ready(function(){
     // Reset canvas
     $("#btn-reset").click(function(){
         resetCanvas = true;
+        rectX = Math.floor(Math.random() * 50) + 50;
+        rectY = Math.floor(Math.random() * 50) + 50;
         clearCanvas();
         // resetCanvas = true;
     });
