@@ -1,41 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Simulation of gravity">
-    <meta name="keywords" content="webdesign, web development, UX, UI, iPhone apps, iPad apps, graphic design, gravity, simulation">
-    <meta name="author" content="Gowthaman Ravindrathas">
     <link href="./assets/favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <meta name="author" content="Gowthaman Ravindrathas">
     <title>Gravity Simulator</title>
-    <!-- CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./css/main.css">
-    <!-- JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
-<body>
-    <div class="container-main">
-        Width <div id="width"></div>
-        Height<div id="height"></div>
-        <canvas id="simulationCanvas">Your browser does not support the HTML5 canvas tag.</canvas>
-
-        <div id="simulation-settings">
-            <h1>Gravity Simulation</h1>
-    
-            Speed: <input id="input-speed" type="number" value="10">
-            <button id="btn-run">Run</button>
-            <button id="btn-add">Add Particle</button>
-            <!-- <button id="btn-clear">Clear</button> -->
-            <button id="btn-reset">Reset</button>
-        </div>
-    
-        <div id="btn-pause" class="hidden">
-            <button>Pause</button>
-        </div>
-    </div>
-</body>
-<script src="./js/main.js"></script>
-<script src="./js/particle.js"></script>
+	<link rel="stylesheet" href="./css/main.css">
+  </head>
+  <body id="body" onload="init();">
+      <div class="content">
+		<h1 class="title">CLICK TO SPAWN A PARTICLE</h1>
+		<div class="bg-text bg1">g=9.81</div>
+		<div class="bg-text bg2">add more particles!</div>
+		<div class="bg-text bg3">spin spin spin</div>
+        <canvas id="space" width="1400" height="900">
+			Your browser does not support the HTML5 canvas tag.
+        </canvas>
+      </div>
+   <script src="./js/space.js"></script>
+  </body>
 </html>
